@@ -44,4 +44,6 @@ model CartItem {
   addedBy   User    @relation(fields: [addedById], references: [id])
   roomId    Int
   room      Room    @relation(fields: [roomId], references: [id])
+
+  comment String?
 }
