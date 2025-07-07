@@ -31,7 +31,7 @@ const addItem = async (req, res) => {
     const item = await prisma.cartItem.create({
       data: {
         name,
-        price,
+        price: parseFloat(req.body.price),
         imageUrl,
         link,
         room: { connect: { id: roomId } },
