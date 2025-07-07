@@ -74,7 +74,7 @@ const updateItemStatus = async (req, res) => {
   try {
     const userId = req.user.userId;
     const itemId = parseInt(req.params.itemId);
-    const { status } = req.body;
+    const { status,comment } = req.body;
 
     if (!["approved", "rejected"].includes(status)) {
       return res.status(400).json({ message: "Invalid status" });
@@ -94,7 +94,11 @@ const updateItemStatus = async (req, res) => {
 
     const updated = await prisma.cartItem.update({
       where: { id: itemId },
-      data: { status }
+      data: { 
+        ...(status && {status}),
+        ...(comment && {comment})
+       },
+       include:{addedBy:true}
     });
 
     res.json(updated);
