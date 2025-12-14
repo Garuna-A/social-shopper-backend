@@ -121,16 +121,6 @@ Backend is available at `http://localhost:5000`.
 
 Please refer to [social-shopper-frontend](https://github.com/Garuna-A/social-shopper-frontend) for frontend installation
 
-# Contributors
-
- - [Anurag Mishra](https://github.com/Garuna-A/)
-
- - [Sidharth Sharma](https://github.com/Sidd0770)
-
- - [Kartik Dixit](https://github.com/SMOKESCRE3N)
-
- - [Gitank Rana](https://github.com/GitankRana)
-
 ---
 ## Built with 💙 for a Social World
 _SocialShopper - Bringing people closer, one cart at a time._
