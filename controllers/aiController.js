@@ -10,14 +10,26 @@ const aiSearch = async(req,res)=>{
                 message:"Prompt is required"
             });
         }
-
         const aiResponse = await convertToSearch(prompt);
-        console.log("AI Response: ",aiResponse);
 
-        const ebayResults = await searchEbayProducts(aiResponse.keywords);
+        const groupedResults = [];
+        for(const item of aiResponse.shoppingList){
+            const products = await searchEbayProducts(item.query);
+            groupedResults.push({
+                category:item.name,
+                products: products.slice(0,2).map(product =>({
+                    id:product.id,
+                    title:product.title,
+                    price:parseFloat(product.price?.value||0),
+                    image:product.image?.imageUrl||"",
+                    url:product.itemWebUrl
+                }))
+            });
+        }
+
         res.json({
-            generatedQuery: aiResponse,
-            products: ebayResults
+            title: aiResponse.title,
+            sections: groupedResults
         });
     }
     catch(err){
