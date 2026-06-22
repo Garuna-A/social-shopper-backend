@@ -13,7 +13,8 @@ const searchEbayProducts = async (query) => {
       }
     }
   );
-  return res.data.itemSummaries;
+
+  return res.data.itemSummaries || [];
 };
 
 module.exports = searchEbayProducts;
