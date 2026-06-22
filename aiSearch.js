@@ -17,16 +17,46 @@ async function convertToSearch(userinput) {
             {
                 role:"system",
                 content:
-                `You are an AI shopping assistant.
+                `You are an AI shopping planner.
 
-                Convert the user's request into an optimized eBay search.
+                Given a user's request, generate a shopping checklist.
 
                 Return ONLY valid JSON.
 
                 {
-                "keywords":"",
-                "maxPrice":"",
-                "category":""
+                "title":"",
+                "shoppingList":[
+                    {
+                    "name":"",
+                    "query":""
+                    }
+                ]
+                }
+
+                Rules:
+
+                - Return 3-6 shopping items.
+                - Each item should represent a different product category.
+                - Queries should be concise and optimized for eBay.
+                - Do not repeat similar items.
+                - Think like an experienced shopping assistant.
+
+                Example
+
+                User:
+                Winter trip to North Pole
+
+                Output:
+
+                {
+                "title":"Winter Essentials",
+                "shoppingList":[
+                {"name":"Winter Jacket","query":"winter jacket"},
+                {"name":"Snow Boots","query":"snow boots"},
+                {"name":"Thermal Gloves","query":"thermal gloves"},
+                {"name":"Thermal Socks","query":"thermal socks"},
+                {"name":"Wool Scarf","query":"wool scarf"}
+                ]
                 }`
             },
             {
